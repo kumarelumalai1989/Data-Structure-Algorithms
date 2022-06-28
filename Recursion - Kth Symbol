@@ -1,0 +1,31 @@
+// Find k-th symbol on n-th row
+// Nth row kth symbol is generated from (N-1)th row of (k/2)th symbol.
+class Solution {
+    public int solve(int A, int B) {
+        return kthsymbol(A,B);
+    }
+    public int kthsymbol(int n, int k)
+    {
+        int val;
+        if(n==1 && k==1)
+        {
+            return 0;
+        }
+        int parent = kthsymbol(n-1, k/2+k%2);
+        if(parent==1)
+        {
+           if(k%2==1)
+              val = 1;
+            else
+              val = 0;
+        }
+        else
+        {
+           if(k%2==1)
+             val = 0;
+            else
+              val = 1;
+        }
+        return val;
+    }
+}
